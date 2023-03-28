@@ -51,7 +51,9 @@ rootRef.on(
         (issue.status == "no" ? "selected" : "") +
         ">no</option>" +
         "</select>" +
-        "</td>";
+        "</td> <td onclick='deletissue(" +
+        id +
+        ")'>x</td>";
       listeTableBody.appendChild(row);
     });
   },
@@ -66,8 +68,14 @@ rootRef.on(
 //   rootRef.child(key).update({ status: value });
 // }
 function updateIssue(key, value) {
-  const updateRef = firebase.database().ref("issueList/"+ key);
+  const updateRef = firebase.database().ref("issueList/" + key);
   updateRef.update({ status: value });
+}
 
-
+// function deletissue(key) {
+//   const removeRef = firebase.database().ref("issueList/" + key);
+//   removeRef.remove();
+// }
+function deletissue(key) {
+  rootRef.child(key).remove();
 }
