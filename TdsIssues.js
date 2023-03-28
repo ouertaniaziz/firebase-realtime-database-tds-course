@@ -31,14 +31,26 @@ rootRef.on(
     listeTableBody.textContent = "";
     snapshot.forEach((element) => {
       issue = element.val();
+      console.log(element.key);
       const row = document.createElement("tr");
+      const id = JSON.stringify(element.key);
+      console.log(id);
       row.innerHTML =
         "<td>" +
         issue.severity +
         "</td> <td>" +
         issue.description +
         "</td> <td>" +
-        issue.status +
+        "<select onchange='updateIssue(" +
+        id +
+        ", this.value)'>" +
+        " <option value='yes'" +
+        (issue.status == "yes" ? "selected" : "") +
+        " >yes</option>" +
+        "<option value='no'" +
+        (issue.status == "no" ? "selected" : "") +
+        ">no</option>" +
+        "</select>" +
         "</td>";
       listeTableBody.appendChild(row);
     });
@@ -48,3 +60,14 @@ rootRef.on(
     console.log(error);
   }
 );
+
+// function updateIssue(key, value) {
+//   console.log(value);
+//   rootRef.child(key).update({ status: value });
+// }
+function updateIssue(key, value) {
+  const updateRef = firebase.database().ref("issueList/"+ key);
+  updateRef.update({ status: value });
+
+
+}
