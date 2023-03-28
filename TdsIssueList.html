@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <header>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="“Pragma”" content="”no-cache”" />
+    <meta http-equiv="“Expires”" content="”-1″" />
+    <meta http-equiv="“CACHE-CONTROL”" content="”NO-CACHE”" />
+    <!-- CSS Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/TDS.css?v=1" />
+
+    <title>TDS Issue List</title>
+  </header>
+
+  <body>
+    <img class="hero" src="images/banner.jpg" alt="banner" />
+
+    <h1 class="section-heading">
+      <img class="logo" src="images/logo.jpg" alt="logo" />&nbsp;Firebase
+      Learning Project
+    </h1>
+    <h2 class="section-subheading">Tunisian Digital School</h2>
+    <h3 class="section-subheading">Issue List</h3>
+
+    <div class="results-div">
+      <table>
+        <col width="15%" />
+        <col width="70%" />
+        <col width="15%" />
+        <thead class="highlight-cell">
+          <th>Issue</th>
+          <th>Description</th>
+          <th>Resolved?</th>
+        </thead>
+        <tbody id="list-table-body"></tbody>
+
+        <tfoot class="empty-cell">
+          <td>
+            <select id="severity-dropdown">
+              <option value="minor">minor</option>
+              <option value="moderate">moderate</option>
+              <option value="major">major</option>
+            </select>
+          </td>
+          <td>
+            <input
+              class="textfield"
+              id="description-textfield"
+              type="text"
+              name="description-textfield"
+              placeholder="e.g. logo missing"
+            />
+          </td>
+          <td>
+            <select id="resolved-dropdown">
+              <option value="no">no</option>
+              <option value="yes">yes</option>
+            </select>
+          </td>
+        </tfoot>
+      </table>
+      <div class="button">
+        <input
+          class="button btn btn-primary"
+          value="Add New Issue in Blue"
+          id="addButton"
+          onclick="addNewIssue()"
+        />
+      </div>
+    </div>
+  </body>
+
+  <footer>
+    <div class="section-divider"><img src="images/infinity-line.png" /></div>
+
+    <br />
+  </footer>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
+
+
+  <script src="./TdsIssues.js"></script>
+</html>
